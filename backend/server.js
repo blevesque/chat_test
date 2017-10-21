@@ -1,14 +1,18 @@
 // npm modules
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var ent = require('ent');
 var fs = require('fs');
 
+// Static routes 
+app.use('/', express.static('../frontend'));
+
 // Dynamic routes
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/chat.html');
-});
+// app.get('/', function (req, res) {
+//   res.sendfile(__dirname + '../frontend/chat.html');
+// });
 
 io.sockets.on('connection', function (socket, pseudo) {
     // As soon as we receive a pseudo, stock it in a var and send it to other users (new user joined channel)

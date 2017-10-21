@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Chat test</title>
-        <style>
-            #channel strong {
-                color: white;
-                background-color: rgb(238, 10, 10);
-                padding: 2px;
-            }
-        </style>
+        <link href="css/style.css" rel="stylesheet">
     </head>
  
     <body>
         <h1>Chat test de Bastien</h1>
 
-        <!-- <form action="/" method="post" id="form_chat"> -->
-            <input type="text" id="message_to_send" placeholder="Votre message..." size="50" autofocus />
-            <input type="button" id="button_send_message" value="Envoyer" />
-        <!-- </form> -->
+        
 
-        <section id="channel">
-            
-        </section>
+        <div id="container">
+            <!-- <form action="/" method="post" id="form_chat"> -->
+            <div id="chat-text-input-and-button">
+                <input type="text" id="message_to_send" placeholder="Votre message..." size="50" autofocus />
+                <input type="button" id="button_send_message" value="Envoyer" />
+            </div>
+            <!-- </form> -->
+            <div id="channel"></div>
+        </div>
     </body>
 
     <footer>
@@ -44,7 +42,7 @@
 
             // new client, display his pseudo
             socket.on('new_client', function(pseudo) {
-                $('#channel').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+                $('#channel').prepend('<p><b>' + pseudo + ' joined the channel !</b></p>');
             });
 
             // click on button send message
@@ -65,7 +63,7 @@
             
             // insert messaage in channel
             function insertMessage(pseudo, message) {
-                $('#channel').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
+                $('#channel').prepend('<div class="message"> <p><strong>' + pseudo + '</strong> ' + message + '</p></div>');
             }
         </script>
     </footer>
