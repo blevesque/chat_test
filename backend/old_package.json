@@ -1,12 +1,12 @@
 {
-    "name": "chatbot_test",
+    "name": "chat_test",
     "version": "0.1.0",
-    "description": "A chat bot prototype",
+    "description": "A chat  prototype",
     "author": "Bastien Levesque <bastien.levesque01@gmail.com>",
     "requires": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/blevesque/chatbot_test"
+        "url": "https://github.com/blevesque/chat_test"
     },
     "dependencies": {
         "ent": "^0.1.0",

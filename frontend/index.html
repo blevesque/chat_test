@@ -8,63 +8,28 @@
     </head>
  
     <body>
-        <h1>Chat test de Bastien</h1>
+        <h1>Bastien's chat test</h1>
 
         
 
-        <div id="container">
-            <!-- <form action="/" method="post" id="form_chat"> -->
-            <div id="chat-text-input-and-button">
-                <input type="text" id="message_to_send" placeholder="Votre message..." size="50" autofocus />
-                <input type="button" id="button_send_message" value="Envoyer" />
+        <div id="chat">
+            <div id="chat-msgs">
+                <div class="msg-div">
+                    <!-- <div class="msg-text">
+                        
+                    </div> -->
+                </div>
             </div>
-            <!-- </form> -->
-            <div id="channel"></div>
+            <div id="chat-text-input-and-button">
+                <input type="text" id="message-to-send" placeholder="Votre message..." autofocus />
+                <input type="button" id="button-send-message" value="Envoyer" />
+            </div>
         </div>
     </body>
 
     <footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-            var socket = io.connect('http://localhost:8080');
-
-            // ask pseudo
-            var pseudo = prompt('What is your pseudo ?');
-
-            // send to server
-            socket.emit('new_client', pseudo);
-
-            // new message incomin, insert it in channel
-            socket.on('message', function(data) {
-                insertMessage(data.pseudo, data.message)
-            });
-
-            // new client, display his pseudo
-            socket.on('new_client', function(pseudo) {
-                $('#channel').prepend('<p><b>' + pseudo + ' joined the channel !</b></p>');
-            });
-
-            // click on button send message
-            $('#button_send_message').click(function () {
-                var message = $('#message_to_send').val();
-                socket.emit('message', message); // send message to server
-                insertMessage(pseudo, message); // display message in client's browser
-                $('#message_to_send').val('').focus(); // clean text input and re-focus it
-                // return false; // cancel form sending and avoid "cannot POST /" error
-            });
-
-            // press enter after typing a message
-            $("#message_to_send").keyup(function(event){
-                if(event.keyCode == 13){
-                    $("#button_send_message").click();
-                }
-            });
-            
-            // insert messaage in channel
-            function insertMessage(pseudo, message) {
-                $('#channel').prepend('<div class="message"> <p><strong>' + pseudo + '</strong> ' + message + '</p></div>');
-            }
-        </script>
+        <script src="js/chat.js"></script>
     </footer>
 </html>
