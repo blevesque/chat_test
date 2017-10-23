@@ -37,16 +37,17 @@ body {
 
 #chat-msgs {
     position: absolute;
-    bottom: 25%;
+    bottom: 20%;
     font-size: 10pt;
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 90%;
     width: 100%;
 }
 
-#chat-msgs::-webkit-scrollbar {
+/* #chat-msgs::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .msg-div {
     width: 100%;

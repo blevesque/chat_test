@@ -35,6 +35,7 @@ function sendMessage(){
 // insert his own messaage in channel
 function insertOwnMessage(pseudo, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text own-msg'><span>" + message + "</span></div></div>");
+    $("#chat-msgs").animate({ scrollTop: $(document).height() }, "slow");
 }
 
 function insertNewMessage(pseudo, message) {
