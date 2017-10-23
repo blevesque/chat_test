@@ -45,9 +45,9 @@ body {
     width: 100%;
 }
 
-/* #chat-msgs::-webkit-scrollbar {
+#chat-msgs::-webkit-scrollbar {
     display: none;
-} */
+}
 
 .msg-div {
     width: 100%;
@@ -112,6 +112,3 @@ span,
     color: white;
 }
 
-/* #button-send-message{
-    height: 50px;
-} */

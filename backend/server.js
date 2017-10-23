@@ -30,6 +30,6 @@ io.sockets.on('connection', function (socket, pseudo) {
 });
 
 // Server startup 
-var port = 8080;
-server.listen(port); // Localhost
+var port = 80;
+server.listen(port, "0.0.0.0"); // Localhost
 console.log('Server started on port ' + port + '.');

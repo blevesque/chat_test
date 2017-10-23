@@ -1,7 +1,7 @@
-var socket = io.connect('http://localhost:8080');
+var socket = io.connect();
 
 // ask pseudo
-var pseudo = prompt('Welcome ! What is your pseudo ?');
+var pseudo = prompt('Welcome ! What is your nickname ?');
 
 // send to server
 socket.emit('new_client', pseudo);
@@ -27,6 +27,8 @@ $("#message-to-send").keyup(function(event){
 // send message in text input
 function sendMessage(){
     var message = $('#message-to-send').val();
+    if (!message)
+	return;
     socket.emit('message', message); // send message to server
     insertOwnMessage(pseudo, message); // display message in client's browser
     $('#message-to-send').val('').focus(); // clean text input and re-focus it
@@ -40,4 +42,5 @@ function insertOwnMessage(pseudo, message) {
 
 function insertNewMessage(pseudo, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text other-msg'><span> <strong>" + pseudo + "</strong> : " + message + "</span></div></div>");
+    $("#chat-msgs").animate({ scrollTop: $(document).height() }, "slow");
 }
