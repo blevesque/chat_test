@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:8080');
 
 // ask pseudo
-var pseudo = prompt('What is your pseudo ?');
+var pseudo = prompt('Welcome ! What is your pseudo ?');
 
 // send to server
 socket.emit('new_client', pseudo);
@@ -13,24 +13,24 @@ socket.on('message', function(data) {
 
 // new client, display his pseudo
 socket.on('new_client', function(pseudo) {
-    $('#chat-msgs').append('<p><b>' + pseudo + ' joined the channel !</b></p>');
+    $('#chat-msgs').append('<p class="center"><b>' + pseudo + ' joined the channel !</b></p>');
     // insertMessage(pseudo, ' joined the channel'); 
-});
-
-// click on button send message
-$('#button-send-message').click(function () {
-    var message = $('#message-to-send').val();
-    socket.emit('message', message); // send message to server
-    insertOwnMessage(pseudo, message); // display message in client's browser
-    $('#message-to-send').val('').focus(); // clean text input and re-focus it
 });
 
 // press enter after typing a message
 $("#message-to-send").keyup(function(event){
     if(event.keyCode == 13){
-        $("#button-send-message").click();
+        sendMessage();
     }
 });
+
+// send message in text input
+function sendMessage(){
+    var message = $('#message-to-send').val();
+    socket.emit('message', message); // send message to server
+    insertOwnMessage(pseudo, message); // display message in client's browser
+    $('#message-to-send').val('').focus(); // clean text input and re-focus it
+}
 
 // insert his own messaage in channel
 function insertOwnMessage(pseudo, message) {

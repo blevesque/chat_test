@@ -1,6 +1,6 @@
 /* Landing page */
 html {
-    height: 100%;
+    height: 70%;
 }
 
 /* Main page */
@@ -9,31 +9,35 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    font-family: "Roboto" !important;
     height: 100%;
     margin: 0;
-    color: rgb(194, 194, 194);
+    color: rgb(213, 213, 213);
 }
 
 /*----------------*/
 
 #chat {
-    position: fixed;
-    width: 300px;
-    height: 500px;
-    max-height: 500px;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(20, 20, 20, 0.9);
+    position: relative;
+    width: 80%;
+    height: 90%;
+    margin-left: 10%;
+    margin-top: 10%;
+    background-color: rgba(20, 20, 20, 0.902);
     border-radius:  15px 15px 5px 5px;
     border: 3px solid white;
     overflow: hidden;
     box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.5);
 }
 
+#chat:after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
 #chat-msgs {
     position: absolute;
-    bottom: 45px;
+    bottom: 25%;
     font-size: 10pt;
     overflow-y: auto;
     max-height: 90%;
@@ -47,31 +51,31 @@ body {
 .msg-div {
     width: 100%;
     height: auto;
-    min-height: 40px;
+    min-height: 20px;
     overflow: hidden;
 }
 
 .msg-text {
-    color: #fff;
     position: relative;
+    color: #fff;
     min-height: auto;
-    max-width: 60%;
-    padding: 7px;
-    margin: 4px 10px 4px 10px;
-    /*margin-top: 5px;
-    margin-bottom: 5px;*/
-    border-radius: 7px;
+    max-width: 40%;
+    margin-bottom: 2px;
+    border-radius: 20px;
+    font-size: 22px;
+    margin-left: 50px;
 }
 
 .other-msg {
     background-color: #979ca3;
-    /* margin-right: 50px; */
     float: left;
+    margin-left: 2% !important;
 }    
 
 .own-msg {
     background-color: #72bf3f;
     float: right;
+    margin-right: 2% !important;
 }
 
 #chat-text-input-and-button {
@@ -80,8 +84,33 @@ body {
     margin: 0;
     width: 100%;
 }
-
-#chat-text-input {
-    width: 100%;
-    padding-right: 40px;
+  
+.center{
+    text-align: center;
 }
+
+#message-to-send,
+span,
+.msg-div
+{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 5px;
+    border: none;
+}
+  
+#message-to-send:focus {
+    outline: 0;
+}
+  
+#message-to-send {
+    font-size: 40px;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    width: 95%;
+    background: rgba(221, 221, 221, 0.076); 
+    color: white;
+}
+
+/* #button-send-message{
+    height: 50px;
+} */

@@ -1,0 +1,18 @@
+{
+  "name": "bastien-chat-test",
+  "version": "0.1.0",
+  "description": "Bastien Levesque's chat test",
+  "main": "server.js",
+  "dependencies": {
+    "ent": "^0.1.0",
+    "express": "^3.3.8",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Bastien Levesque",
+  "license": "ISC"
+}
