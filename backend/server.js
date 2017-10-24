@@ -14,18 +14,18 @@ app.use('/', express.static('../frontend'));
 //   res.sendfile(__dirname + '../frontend/chat.html');
 // });
 
-io.sockets.on('connection', function (socket, pseudo) {
-    // As soon as we receive a pseudo, stock it in a var and send it to other users (new user joined channel)
-    socket.on('new_client', function(pseudo) {
-        pseudo = ent.encode(pseudo);
-        socket.pseudo = pseudo;
-        socket.broadcast.emit('new_client', pseudo);
+io.sockets.on('connection', function (socket, nickname) {
+    // As soon as we receive a nickname, stock it in a var and send it to other users (new user joined channel)
+    socket.on('new_client', function(nickname) {
+        nickname = ent.encode(nickname);
+        socket.nickname = nickname;
+        socket.broadcast.emit('new_client', nickname);
     });
 
     // As soon as we receive a message, we broadcast it to every users
     socket.on('message', function (message) {
         message = ent.encode(message);
-        socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message});
+        socket.broadcast.emit('message', {nickname: socket.nickname, message: message});
     }); 
 });
 

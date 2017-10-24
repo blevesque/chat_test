@@ -1,20 +1,20 @@
 var socket = io.connect();
 
-// ask pseudo
-var pseudo = prompt('Welcome ! What is your nickname ?');
+// ask nickname
+var nickname = prompt('Welcome ! What is your nickname ?');
 
 // send to server
-socket.emit('new_client', pseudo);
+socket.emit('new_client', nickname);
 
 // new message incomin, insert it in channel
 socket.on('message', function(data) {
-    insertNewMessage(data.pseudo, data.message)
+    insertNewMessage(data.nickname, data.message)
 });
 
-// new client, display his pseudo
-socket.on('new_client', function(pseudo) {
-    $('#chat-msgs').append('<p class="center"><b>' + pseudo + ' joined the channel !</b></p>');
-    // insertMessage(pseudo, ' joined the channel'); 
+// new client, display his nickname
+socket.on('new_client', function(nickname) {
+    $('#chat-msgs').append('<p class="center"><b>' + nickname + ' joined the channel !</b></p>');
+    // insertMessage(nickname, ' joined the channel'); 
 });
 
 // press enter after typing a message
@@ -30,17 +30,17 @@ function sendMessage(){
     if (!message)
 	return;
     socket.emit('message', message); // send message to server
-    insertOwnMessage(pseudo, message); // display message in client's browser
+    insertOwnMessage(nickname, message); // display message in client's browser
     $('#message-to-send').val('').focus(); // clean text input and re-focus it
 }
 
 // insert his own messaage in channel
-function insertOwnMessage(pseudo, message) {
+function insertOwnMessage(nickname, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text own-msg'><span>" + message + "</span></div></div>");
     $("#chat-msgs").animate({ scrollTop: $(document).height() }, "slow");
 }
 
-function insertNewMessage(pseudo, message) {
-    $("#chat-msgs").append("<div class='msg-div'><div class='msg-text other-msg'><span> <strong>" + pseudo + "</strong> : " + message + "</span></div></div>");
+function insertNewMessage(nickname, message) {
+    $("#chat-msgs").append("<div class='msg-div'><div class='msg-text other-msg'><span> <strong>" + nickname + "</strong> : " + message + "</span></div></div>");
     $("#chat-msgs").animate({ scrollTop: $(document).height() }, "slow");
 }
