@@ -1,7 +1,14 @@
 var socket = io.connect();
 
 // ask nickname
-var nickname = prompt('Welcome ! What is your nickname ?');
+var nickname = prompt('Welcome ! What is your nickname ?', "default");
+if (nickname === "") {
+    nickname = "userWithoutID";
+} else if (nickname) {
+    nickname = nickname;
+} else {
+    nickname = "userCanceledPromptHeIsABadGuy"; //If I had a real connection before this site, I should manage this error
+}
 
 // send to server
 socket.emit('new_client', nickname);
@@ -37,10 +44,12 @@ function sendMessage(){
 // insert his own messaage in channel
 function insertOwnMessage(nickname, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text own-msg'><span>" + message + "</span></div></div>");
-    $("#chat-msgs").animate({ scrollTop: $(document).height() }, "slow");
+    // scroll chat-msgs div to bottom
+    $("#chat-msgs").animate({ scrollTop: $("#chat-msgs")[0].scrollHeight }, "fast");
 }
 
 function insertNewMessage(nickname, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text other-msg'><span> <strong>" + nickname + "</strong> : " + message + "</span></div></div>");
-    $("#chat-msgs").animate({ scrollTop: $(document).height() }, "slow");
+    // scroll to bottom
+    $("#chat-msgs").animate({ scrollTop: $("#chat-msgs")[0].scrollHeight }, "fast");
 }
