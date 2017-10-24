@@ -44,12 +44,15 @@ function sendMessage(){
 // insert his own messaage in channel
 function insertOwnMessage(nickname, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text own-msg'><span>" + message + "</span></div></div>");
-    // scroll chat-msgs div to bottom
-    $("#chat-msgs").animate({ scrollTop: $("#chat-msgs")[0].scrollHeight }, "fast");
+    scrollChannelToBot();
 }
 
 function insertNewMessage(nickname, message) {
     $("#chat-msgs").append("<div class='msg-div'><div class='msg-text other-msg'><span> <strong>" + nickname + "</strong> : " + message + "</span></div></div>");
+    scrollChannelToBot();
+}
+
+function scrollChannelToBot(){
     // scroll to bottom
     $("#chat-msgs").animate({ scrollTop: $("#chat-msgs")[0].scrollHeight }, "fast");
 }
